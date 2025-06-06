@@ -54,7 +54,6 @@ class CartManager {
   }
 
   // 5) Reemplazar TODOS los productos del carrito (PUT /api/carts/:cid)
-  //    newProductsArray := [ { product: productId, quantity: X }, … ]
   async updateCartProducts(cid, newProductsArray) {
     const cart = await Cart.findById(cid);
     if (!cart) return null;

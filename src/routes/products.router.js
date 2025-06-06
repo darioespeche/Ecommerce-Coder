@@ -121,10 +121,10 @@ module.exports = function (io) {
     }
   });
 
-  // GET /api/products/:pid
   router.get("/:pid", async (req, res) => {
     try {
-      const product = await pm.getById(req.params.pid);
+      const { pid } = req.params;
+      const product = await pm.getById(pid);
       if (!product) {
         return res
           .status(404)
@@ -132,6 +132,14 @@ module.exports = function (io) {
       }
       return res.json({ status: "success", payload: product });
     } catch (err) {
+      // Si el error es un CastError de Mongoose, significa que "pid" no tiene el formato de ObjectId
+      if (err.name === "CastError" && err.kind === "ObjectId") {
+        return res
+          .status(400)
+          .json({ status: "error", error: "ID de producto inválido" });
+      }
+
+      // Para cualquier otro error, devolvemos 500
       return res.status(500).json({ status: "error", error: err.message });
     }
   });
