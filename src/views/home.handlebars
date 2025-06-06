@@ -1,0 +1,11 @@
+<h1>Productos (Home)</h1>
+{{#if products.length}}
+  <ul>
+    {{#each products}}
+      <li>{{this.title}} — ${{this.price}}</li>
+    {{/each}}
+  </ul>
+{{else}}
+  <p>No hay productos.</p>
+{{/if}}
+<a href="/view/realtimeproducts">Ver en tiempo real</a>

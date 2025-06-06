@@ -1,0 +1,23 @@
+<h1>Productos (En tiempo real)</h1>
+<ul id="productsList">
+  <li>Cargando productos…</li>
+</ul>
+
+<h2>Añadir producto</h2>
+<form id="addProductForm">
+  <!-- campos: title, description, code, price, stock, category, thumbnails -->
+  <input name="title" placeholder="Título" required />
+  <input name="description" placeholder="Descripción" required />
+  <input name="code" placeholder="Código" required />
+  <input name="price" type="number" placeholder="Precio" required />
+  <input name="stock" type="number" placeholder="Stock" required />
+  <input name="category" placeholder="Categoría" required />
+  <input name="thumbnails" placeholder="Thumbnails (coma-separados)" />
+  <button type="submit">Crear</button>
+</form>
+
+<h2>Eliminar producto</h2>
+<form id="deleteProductForm">
+  <input name="pid" type="text" placeholder="ID a eliminar" required />
+  <button type="submit">Eliminar</button>
+</form>
