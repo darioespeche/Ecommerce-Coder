@@ -1,0 +1,48 @@
+<h1>Productos</h1>
+
+<ul>
+  {{#each products}}
+    <li>
+      <strong>{{this.title}}</strong>
+      — ${{this.price}}
+      <button class="add-to-cart" data-pid="{{this._id}}">
+        Agregar al carrito
+      </button>
+    </li>
+  {{/each}}
+</ul>
+
+<script>
+  // Al cargar la página: document.querySelectorAll(".add-to-cart").forEach(btn
+  => { btn.addEventListener("click", async () => { const pid = btn.dataset.pid;
+  // 1) Mira si ya hay un cartId guardado let cartId =
+  localStorage.getItem("cartId"); if (!cartId) { // 2) Si no existe, lo creamos
+  const res = await fetch("/api/carts", { method: "POST" }); const json = await
+  res.json(); if (!json.success) { return alert("Error creando carrito"); }
+  cartId = json.payload._id; localStorage.setItem("cartId", cartId); } // 3)
+  Ahora agregamos el producto const r2 = await
+  fetch(`/api/carts/${cartId}/product/${pid}`, { method: "POST" }); const j2 =
+  await r2.json(); if (j2.success) { alert("Producto agregado al carrito 👍"); }
+  else { alert("Error: " + j2.error); } }); });
+</script>
+
+<script>
+  const cartId = localStorage.getItem("cartId"); if (cartId) {
+  document.body.insertAdjacentHTML( "beforeend", `<p><a
+  href="/view/carts/${cartId}">Ver mi carrito</a></p>` ); }
+</script>
+
+<nav>
+  {{#if pagination.hasPrevPage}}
+    <a href="{{pagination.prevLink}}">« Anterior</a>
+  {{/if}}
+  Página
+  {{pagination.page}}
+  de
+  {{pagination.totalPages}}
+  {{#if pagination.hasNextPage}}
+    <a href="{{pagination.nextLink}}">Siguiente »</a>
+  {{/if}}
+</nav>
+<!-- al final de index.handlebars -->
+<script src="/js/cart.js"></script>

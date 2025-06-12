@@ -46,5 +46,5 @@ app.use((req, res) => {
 
 // 7) Levantar el servidor HTTP + Socket.IO
 httpServer.listen(PORT, () => {
-  console.log(`Servidor corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor corriendo en http://localhost:${PORT}/view`);
 });

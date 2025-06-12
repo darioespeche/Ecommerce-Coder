@@ -2,9 +2,7 @@
 const Cart = require("../models/Cart");
 
 class CartManager {
-  constructor() {
-    // No necesitamos filePath
-  }
+  constructor() {}
 
   // 1) Crear un carrito nuevo (vacío)
   async createCart() {
@@ -58,7 +56,6 @@ class CartManager {
     const cart = await Cart.findById(cid);
     if (!cart) return null;
 
-    // Asignamos directamente la lista nueva (puedes añadir validaciones aquí)
     cart.products = newProductsArray.map((item) => ({
       product: item.product,
       quantity: item.quantity,
