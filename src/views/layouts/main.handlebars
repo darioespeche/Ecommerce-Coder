@@ -1,9 +1,29 @@
-<html>
+<html lang="es">
   <head>
     <meta charset="utf-8" />
     <title>{{title}}</title>
+    <link rel="stylesheet" href="/css/style.css" />
   </head>
   <body>
+    <header>
+      <h1>Mi E-Commerce</h1>
+      <nav>
+        <a href="/view/">Home</a>
+        <a href="/view/products">Productos</a>
+        <a href="/view/realtimeproducts">Realtime</a>
+        {{#if @root.cartId}}
+          <a href="/view/carts/{{@root.cartId}}">Mi Carrito</a>
+        {{/if}}
+      </nav>
+    </header>
+
     {{{body}}}
+
+    <footer>
+      &copy; 2025 Mi E-Commerce
+    </footer>
+
+    <script src="/js/cart.js"></script>
+    <script src="/js/homeCart.js"></script>
   </body>
 </html>

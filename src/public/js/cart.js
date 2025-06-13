@@ -31,3 +31,43 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 });
+
+document.querySelectorAll(".remove-from-cart").forEach((btn) => {
+  btn.addEventListener("click", async () => {
+    const pid = btn.dataset.pid;
+    const cartId = localStorage.getItem("cartId");
+    if (!cartId) return alert("No hay carrito activo");
+
+    const res = await fetch(`/api/carts/${cartId}/product/${pid}`, {
+      method: "DELETE",
+    });
+    const json = await res.json();
+    if (json.success) {
+      alert("Producto eliminado del carrito");
+      location.reload();
+    } else {
+      alert("Error: " + json.error);
+    }
+  });
+});
+
+// Botón para vaciar el carrito
+const clearBtn = document.getElementById("clear-cart");
+if (clearBtn) {
+  clearBtn.addEventListener("click", async () => {
+    const cartId = localStorage.getItem("cartId");
+    if (!cartId) return alert("No hay carrito activo");
+
+    const res = await fetch(`/api/carts/${cartId}`, {
+      method: "DELETE",
+    });
+    const json = await res.json();
+    if (json.success) {
+      alert("Carrito vaciado");
+      localStorage.removeItem("cartId");
+      location.reload();
+    } else {
+      alert("Error: " + json.error);
+    }
+  });
+}

@@ -1,11 +1,20 @@
-<h1>Productos (Home)</h1>
-{{#if products.length}}
-  <ul>
+<main class="products-grid">
+  {{#if products.length}}
     {{#each products}}
-      <li>{{this.title}} — ${{this.price}}</li>
+      <div class="product-card">
+        <h2>{{this.title}}</h2>
+        <div class="body">
+          <p><strong>Precio:</strong> ${{this.price}}</p>
+          <p><strong>Categoría:</strong> {{this.category}}</p>
+        </div>
+        <div class="footer">
+          <button class="btn add-to-cart" data-pid="{{this._id}}">
+            Agregar al carrito
+          </button>
+        </div>
+      </div>
     {{/each}}
-  </ul>
-{{else}}
-  <p>No hay productos.</p>
-{{/if}}
-<a href="/view/realtimeproducts">Ver en tiempo real</a>
+  {{else}}
+    <p>No hay productos aún.</p>
+  {{/if}}
+</main>

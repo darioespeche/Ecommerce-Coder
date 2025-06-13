@@ -1,48 +1,37 @@
-<h1>Productos</h1>
+{{! views/products/index.handlebars }}
+<main class="container">
+  <section class="products-grid">
+    {{#if products.length}}
+      {{#each products}}
+        <div class="product-card">
+          <h2>{{this.title}}</h2>
+          <div class="body">
+            <p><strong>Precio:</strong> ${{this.price}}</p>
+            <p><strong>Categoría:</strong> {{this.category}}</p>
+          </div>
+          <div class="footer">
+            <a class="btn" href="/view/products/{{this._id}}">Detalle</a>
+            <button class="btn add-to-cart" data-pid="{{this._id}}">
+              Agregar
+            </button>
+          </div>
+        </div>
+      {{/each}}
+    {{else}}
+      <p>No hay productos disponibles.</p>
+    {{/if}}
+  </section>
 
-<ul>
-  {{#each products}}
-    <li>
-      <strong>{{this.title}}</strong>
-      — ${{this.price}}
-      <button class="add-to-cart" data-pid="{{this._id}}">
-        Agregar al carrito
-      </button>
-    </li>
-  {{/each}}
-</ul>
+  {{! Paginación }}
+  <nav class="pagination">
+    {{#if pagination.hasPrevPage}}
+      <a href="{{pagination.prevLink}}" class="btn">&laquo; Anterior</a>
+    {{/if}}
+    <span> Página {{pagination.page}} de {{pagination.totalPages}} </span>
+    {{#if pagination.hasNextPage}}
+      <a href="{{pagination.nextLink}}" class="btn">Siguiente &raquo;</a>
+    {{/if}}
+  </nav>
+</main>
 
-<script>
-  // Al cargar la página: document.querySelectorAll(".add-to-cart").forEach(btn
-  => { btn.addEventListener("click", async () => { const pid = btn.dataset.pid;
-  // 1) Mira si ya hay un cartId guardado let cartId =
-  localStorage.getItem("cartId"); if (!cartId) { // 2) Si no existe, lo creamos
-  const res = await fetch("/api/carts", { method: "POST" }); const json = await
-  res.json(); if (!json.success) { return alert("Error creando carrito"); }
-  cartId = json.payload._id; localStorage.setItem("cartId", cartId); } // 3)
-  Ahora agregamos el producto const r2 = await
-  fetch(`/api/carts/${cartId}/product/${pid}`, { method: "POST" }); const j2 =
-  await r2.json(); if (j2.success) { alert("Producto agregado al carrito 👍"); }
-  else { alert("Error: " + j2.error); } }); });
-</script>
-
-<script>
-  const cartId = localStorage.getItem("cartId"); if (cartId) {
-  document.body.insertAdjacentHTML( "beforeend", `<p><a
-  href="/view/carts/${cartId}">Ver mi carrito</a></p>` ); }
-</script>
-
-<nav>
-  {{#if pagination.hasPrevPage}}
-    <a href="{{pagination.prevLink}}">« Anterior</a>
-  {{/if}}
-  Página
-  {{pagination.page}}
-  de
-  {{pagination.totalPages}}
-  {{#if pagination.hasNextPage}}
-    <a href="{{pagination.nextLink}}">Siguiente »</a>
-  {{/if}}
-</nav>
-<!-- al final de index.handlebars -->
 <script src="/js/cart.js"></script>

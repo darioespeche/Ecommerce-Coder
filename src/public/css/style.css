@@ -1,0 +1,164 @@
+/* public/css/style.css */
+body {
+  font-family: Arial, sans-serif;
+  background: #f5f5f5;
+  margin: 0;
+  padding: 2rem;
+}
+
+.cart-container {
+  max-width: 600px;
+  margin: 0 auto;
+  background: white;
+  padding: 1.5rem;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.75rem;
+  border-bottom: 1px solid #ddd;
+}
+.cart-item:last-child {
+  border-bottom: none;
+}
+
+button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+button:hover {
+  background-color: #0056b3;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+.btn-danger:hover {
+  background-color: #a71d2a;
+}
+
+.cart-actions {
+  margin-top: 1rem;
+  text-align: center;
+}
+.cart-actions a {
+  display: inline-block;
+  margin: 0 0.5rem;
+  color: #007bff;
+  text-decoration: none;
+}
+.cart-actions a:hover {
+  text-decoration: underline;
+}
+/* GRID DE PRODUCTOS */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
+  margin: 2rem 0;
+}
+
+.product-card {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.product-card h2 {
+  margin: 0;
+  padding: 1rem;
+  font-size: 1.2rem;
+  background: #f7f7f7;
+}
+
+.product-card .body {
+  padding: 1rem;
+  flex-grow: 1;
+}
+
+.product-card .body p {
+  margin: 0.5rem 0;
+}
+
+.product-card .footer {
+  padding: 0.75rem;
+  text-align: center;
+  background: #fafafa;
+}
+
+.btn {
+  display: inline-block;
+  background: #007bff;
+  color: white;
+  text-decoration: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  font-size: 0.9rem;
+}
+
+.btn:hover {
+  background: #0056b3;
+}
+
+/* HEADER / NAV */
+header {
+  background: #007bff;
+  color: white;
+  padding: 1rem 2rem;
+}
+
+header nav a {
+  color: white;
+  margin-right: 1rem;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+header nav a:hover {
+  text-decoration: underline;
+}
+
+footer {
+  text-align: center;
+  padding: 1rem;
+  margin-top: 2rem;
+  color: #666;
+  font-size: 0.8rem;
+}
+/* Contenedor general */
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+/* Resumen de Carrito */
+.cart-overview {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 1rem;
+  border-radius: 6px;
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.cart-overview h2 {
+  margin-top: 0;
+}
+
+.cart-overview p {
+  font-size: 1.2rem;
+  margin: 0.5rem 0;
+}
