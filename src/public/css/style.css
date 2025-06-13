@@ -162,3 +162,29 @@ footer {
   font-size: 1.2rem;
   margin: 0.5rem 0;
 }
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+.pagination .btn {
+  padding: 0.4rem 0.8rem;
+}
+
+.product-detail-card {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 600px;
+  margin: 2rem auto;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+.product-detail-card ul {
+  list-style: none;
+  padding: 0;
+}
+.product-detail-card ul li {
+  margin: 0.5rem 0;
+}

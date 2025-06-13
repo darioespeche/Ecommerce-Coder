@@ -1,15 +1,18 @@
-<h1>{{product.title}}</h1>
+<main class="container">
+  <div class="product-detail-card">
+    <h1>{{product.title}}</h1>
+    <p>{{product.description}}</p>
+    <ul>
+      <li><strong>Precio:</strong> ${{product.price}}</li>
+      <li><strong>Categoría:</strong> {{product.category}}</li>
+      <li><strong>Stock:</strong> {{product.stock}}</li>
+      <li><strong>Código:</strong> {{product.code}}</li>
+    </ul>
+    <button class="btn add-to-cart" data-pid="{{product._id}}">
+      Agregar al carrito
+    </button>
+    <a href="/view/products" class="btn">Volver</a>
+  </div>
+</main>
 
-<p><strong>Descripción:</strong> {{product.description}}</p>
-<p><strong>Precio:</strong> ${{product.price}}</p>
-<p><strong>Categoría:</strong> {{product.category}}</p>
-<p><strong>Código:</strong> {{product.code}}</p>
-<p><strong>Stock:</strong> {{product.stock}}</p>
-<p><strong>Status:</strong>
-  {{#if product.status}}Disponible{{else}}Agotado{{/if}}</p>
-
-<form action="/api/carts/{{cartId}}/product/{{product._id}}" method="post">
-  <button type="submit">Agregar al carrito</button>
-</form>
-
-<p><a href="/view/products">« Volver al listado</a></p>
+<script src="/js/cart.js"></script>

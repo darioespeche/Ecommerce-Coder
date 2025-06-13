@@ -11,9 +11,9 @@
         <a href="/view/">Home</a>
         <a href="/view/products">Productos</a>
         <a href="/view/realtimeproducts">Realtime</a>
-        {{#if @root.cartId}}
-          <a href="/view/carts/{{@root.cartId}}">Mi Carrito</a>
-        {{/if}}
+        <a href="#" id="nav-cart-link">
+          Carrito (<span id="nav-cart-count">0</span>)
+        </a>
       </nav>
     </header>
 
@@ -24,6 +24,6 @@
     </footer>
 
     <script src="/js/cart.js"></script>
-    <script src="/js/homeCart.js"></script>
+    <script src="/js/navCart.js"></script>
   </body>
 </html>
